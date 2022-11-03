@@ -2,10 +2,17 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Support\Str;
+
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\NxtApiKeys;
 use Illuminate\Http\Request;
+
+
 use Illuminate\Support\Facades\Hash;
+
+
 
 class RegisterController extends Controller
 {
@@ -30,13 +37,21 @@ class RegisterController extends Controller
             $user->user_type = 'user';
             $user->username = $username;
             $user->password = Hash::make($validated['password']);
-            
+
+            //before redirecting create a table for api keys
             if($user->save()){
+                $api_keys = new NxtApiKeys;
+                $api_keys->user_id = $user->id;
+                $api_keys->test_api_key = Str::random(15);
+                $api_keys->live_api_key = Str::random(15);
+
+                $api_keys->save(); //save it to the db
+
                 return redirect()->route('login')->with('success','Account creation successful.')->with('username',$username);
+
             }else{
                 return redirect()->back()->with('error','Account creation failed, please try again')->withInput();
             }
-
         }else{
             return view('auth.register');
         }

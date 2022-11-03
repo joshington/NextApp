@@ -13,8 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('nxt_transactions_withdraws', function (Blueprint $table) {
+        Schema::create('nxt_api_keys', function (Blueprint $table) {
             $table->id();
+            $table->unsignedInteger('user_id');
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
+            $table->string('test_api_key')->default(env('TEST_API_KEY'));
+            $table->string('live_api_key')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('nxt_transactions_withdraws');
+        Schema::dropIfExists('nxt_api_keys');
     }
 };

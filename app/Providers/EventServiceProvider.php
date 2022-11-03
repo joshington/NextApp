@@ -6,6 +6,8 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
+
+use App\Events\UserCreateSuccessful;
 use App\Events\LoginHistory;
 use App\Listeners\storeUserLoginHistory;
 
@@ -18,6 +20,9 @@ class EventServiceProvider extends ServiceProvider
      * @var array<class-string, array<int, class-string>>
      */
     protected $listen = [
+        UserCreateSuccessful::class => [
+
+        ],
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],

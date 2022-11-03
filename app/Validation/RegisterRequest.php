@@ -32,5 +32,5 @@ Trait RegisterRequest
         }
         return $validator;
     }
-    
+
 }

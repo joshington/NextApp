@@ -25,6 +25,18 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(nxt_business_kyc::class);
     }
 
+    //===one user can have many transaction charges
+    public function nxtTransactionCharges()
+    {
+        return $this->hasMany(NxtTransactionCharges::class);
+    }
+
+    //==one user can have many api keys===========
+    public function nxtApiKeys()
+    {
+        return $this->hasMany(NxtApiKeys::class);
+    }
+
     /**
      * The attributes that are mass assignable.
      *
@@ -59,5 +71,20 @@ class User extends Authenticatable implements MustVerifyEmail
     public function nxtCollections()
     {
         return $this->hasMany(NxtCollections::class);
+    }
+
+    public function nxtUserWallet()
+    {
+        return $this->hasOne(NxtUserWallet::class);
+    }
+
+    public function nxtWithdraw()
+    {
+        return $this->hasMany(NxtWithdraw::class);
+    }
+
+    public function paymentLink()
+    {
+        return $this->hasMany(PaymentLink::class);
     }
 }

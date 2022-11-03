@@ -10,10 +10,6 @@ class nxt_business_kyc extends Model
     use HasFactory;
 
     //now adding the inverse relationship
-    public function user()
-    {
-        return $this->belongsTo(User::class, 'user_id');
-    }
 
     protected $fillable = [
         'business_name',
@@ -22,5 +18,11 @@ class nxt_business_kyc extends Model
         'nid_path',
         'cic_path'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
 
 }

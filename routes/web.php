@@ -11,6 +11,7 @@ use App\Http\Controllers\User\PayemtlinkController;
 use App\Http\Controllers\User\WithdrawalsController;
 
 use App\Http\Controllers\NxtBusinessKycController;
+use App\Http\Controllers\NxtApiKeysController;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -121,8 +122,10 @@ Route::middleware('auth','auth.session')->group(function(){
             Route::controller(DeveloperController::class)->group(function(){
                 Route::get('/', 'index')->name('api_home');
                 Route::get('/api', 'api_settings')->name('api_settings');
+
                 Route::get('/webhook', 'api_webhook')->name('api_webhook');
             });
+            //====get the api keys from here
         });
 
     });

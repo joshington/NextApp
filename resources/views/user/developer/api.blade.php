@@ -33,7 +33,7 @@
         <div class="card-body">
             <form>
                 <label>API Key</label>
-                <input style="width: 40%;" />
+                <h3>{{ $test_key }}</h3>
             </form>
         </div>
     </div>

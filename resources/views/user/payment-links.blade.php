@@ -32,12 +32,12 @@
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                    <th>Payment Link</th>
-                    <th scope="col">Deposits</th>
+                    <th>Link name</th>
+                    <th scope="col">Type</th>
                     <th>Business</th>
                     <th>Amount</th>
                     <th scope="col">Created</th>
-                    <th>Action</th>
+                    <th>View link</th>
                     </tr>
                 </thead>
                 @forelse ($links as $link)
@@ -59,9 +59,10 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">New Payment Link</h5>
+                <h5 class="modal-title" style="text-align: center;">New Payment Link</h5>
                 <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+
             <div class="modal-body p-2">
                 <p>coming soon...</p>
             </div>

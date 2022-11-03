@@ -17,10 +17,9 @@ return new class extends Migration
             $table->id();
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade'); //
-            $table->boolean('is_percent');
-            $table->boolean('is_flatvalue');
-            $table->integer('value_withdraw');
-            $table->integer('value_deposit');
+            $table->boolean('is_percent')->default(false); //if false means we use the other
+            $table->integer('value_withdraw')->default(0);
+            $table->integer('value_deposit')->default(0);
             $table->timestamps();
         });
     }

@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class NxtCollections extends Model
+class NxtApiKeys extends Model
 {
     use HasFactory;
 
+
     protected $fillable = [
-        'collected_amount',
-        'client_phone',
-        'transaction_id'
+        'test_api_key',
+        'live_api_key'
     ];
 
     //get the user that owns this collection
@@ -20,5 +20,4 @@ class NxtCollections extends Model
     {
         return $this->belongsTo(User::class);
     }
-
 }

@@ -5,20 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class NxtCollections extends Model
+class PaymentLink extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'collected_amount',
-        'client_phone',
-        'transaction_id'
+        'link_address',
+        'charge_amount',
+        'link_name',
+        'test_mode'
     ];
+
 
     //get the user that owns this collection
     public function user()
     {
         return $this->belongsTo(User::class);
     }
-
 }

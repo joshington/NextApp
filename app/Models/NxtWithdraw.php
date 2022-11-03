@@ -5,20 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class NxtCollections extends Model
+class NxtWithdraw extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'collected_amount',
-        'client_phone',
-        'transaction_id'
+        'withdrawed_amount',
+        'transaction_id',
     ];
 
-    //get the user that owns this collection
     public function user()
     {
         return $this->belongsTo(User::class);
     }
-
 }

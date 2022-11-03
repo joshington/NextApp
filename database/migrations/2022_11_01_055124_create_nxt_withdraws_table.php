@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('nxt_collections', function (Blueprint $table) {
+        Schema::create('nxt_withdraws', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('collected_amount')->default(0);
+            $table->unsignedBigInteger('withdrawed_amount')->default(0);
             $table->unsignedInteger('user_id');
             //above for the user that is collecting the amount
             $table->foreign('user_id')
@@ -23,7 +23,6 @@ return new class extends Migration
                 ->on('users')
                 ->onDelete('cascade'); //we dont wanna delete collections cz we need data
             //also store the customer phone number
-            $table->string('client_phone');
             $table->string('transaction_id');
             $table->timestamps();
         });
@@ -36,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('nxt_collections');
+        Schema::dropIfExists('nxt_withdraws');
     }
 };

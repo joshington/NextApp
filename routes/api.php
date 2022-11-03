@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ApiController;
+use App\Http\Middleware\ApiKey;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,12 +16,20 @@ use App\Http\Controllers\ApiController;
 |
 */
 //==route to handle collections========
-Route::get('/test', [ApiController::class, 'testin']);
-Route::get('/sample', [ApiController::class, 'collectSample']);
 
-Route::controller(ApiController::class)->group(function(){
+Route::get('/test', [ApiController::class, 'testin']);
+
+
+
+Route::middleware([ApiKey::class])->group(function(){
+    Route::post('/sample', [ApiController::class, 'collectSample']);
     Route::post('/collect', [ApiController::class, 'collectMoney']);
+    Route::post('/withdraw', [ApiController::class, 'withdraw']);
 });
+
+//Route::controller(ApiController::class)->group(function(){
+
+//});
 
 
 
